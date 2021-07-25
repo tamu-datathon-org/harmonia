@@ -19,7 +19,7 @@ export const Navbar: React.FC = () => {
       </UI.NavbarDropdownToggle>
       <Dropdown.Menu className="dropdown-menu-right">
         <Dropdown.Header>{user?.email}</Dropdown.Header>
-        <Dropdown.Item href="/auth/logout?r=/discord-auth">Logout</Dropdown.Item>
+        <Dropdown.Item href="/auth/logout?r=/discord">Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

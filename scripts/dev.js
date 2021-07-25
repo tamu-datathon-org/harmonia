@@ -14,7 +14,7 @@ const proxyToLocalhost = (req, res, next) => {
   try {
     const path = req.originalUrl.split('/').slice(1);
     let url = req.originalUrl;
-    if (path[0] == 'discord-auth') {
+    if (path[0] == 'discord') {
       url = path.length >= 1 ? path.join('/') : '';
     }
     req.originalUrl = url;
@@ -35,8 +35,8 @@ const proxyToLocalhost = (req, res, next) => {
   }
 };
 
-app.all('/discord-auth', proxyToLocalhost);
-app.all('/discord-auth/*', proxyToLocalhost);
+app.all('/discord', proxyToLocalhost);
+app.all('/discord/*', proxyToLocalhost);
 
 app.all('*', (req, res) => {
   try {
