@@ -20,6 +20,29 @@ export default function Home(): JSX.Element {
             Harmonia
           </Text>
           <Text className="sub-heading">{orgName} Discord Authentication</Text>
+
+          <div className="circle">1</div>
+          <Text h2>
+            Connect your Discord Account
+          </Text>
+          <br></br>
+          <button className="sign-in-discord-button">Sign In With Discord</button>
+          <br></br>
+
+          <div className="circle">2</div>
+          <Text h2>
+            Agree to the Server Rules
+          </Text>
+          <br></br>
+          <button className="server-rules-button-1">I Agree</button><button className="server-rules-button-2">Nope</button>
+          <br></br>
+
+          <div className="circle">3</div>
+          <Text h2>
+            Come on in!
+          </Text>
+          <br></br>
+          <button className="sign-in-discord-button">Open the Discord Server</button>
         </Page>
       </>
   );
