@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { orgName, mailingLists, htmlContentPlaceholder } from '../components/constants';
 import { Navbar } from '../components/Navbar';
 import { useActiveUser } from '../components/UserProvider';
+import router, { useRouter } from 'next/router';
 
 export default function Home(): JSX.Element {
   const { user, status } = useActiveUser();
@@ -11,6 +12,7 @@ export default function Home(): JSX.Element {
 
   const previewWidthChangeHandler = (val) => setPreviewWidth(val);
 
+  const router = useRouter();
 
   return (
       <>
@@ -26,7 +28,7 @@ export default function Home(): JSX.Element {
             Connect your Discord Account
           </Text>
           <br></br>
-          <button className="sign-in-discord-button">Sign In With Discord</button>
+          <button className="sign-in-discord-button" type="button" onClick={() => router.push('/api/auth')}>Sign In With Discord</button>
           <br></br>
 
           <div className="circle">2</div>
