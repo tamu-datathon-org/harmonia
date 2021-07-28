@@ -59,9 +59,10 @@ handler.use(passport.session());
 handler.get('/api/auth', passport.authenticate('discord', {
     failureRedirect: '/forbidden'
 }), (req, res) => {
-    res.statusCode = 302;
-    res.setHeader("discord auth", "http://localhost:3000/discord/");
-    res.end();
+    //res.statusCode = 302;
+    //res.setHeader("Header", "http://localhost:3000/discord/");
+    //res.end();
+    res.send(200);
 });
 
 export default handler;
