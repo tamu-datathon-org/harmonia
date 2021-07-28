@@ -5,6 +5,7 @@ import { Navbar } from '../components/Navbar';
 import { useActiveUser } from '../components/UserProvider';
 import router, { useRouter } from 'next/router';
 
+
 export default function Home(): JSX.Element {
   const { user, status } = useActiveUser();
   const [previewWidth, setPreviewWidth] = useState(400);
@@ -13,6 +14,7 @@ export default function Home(): JSX.Element {
   const previewWidthChangeHandler = (val) => setPreviewWidth(val);
 
   const router = useRouter();
+
 
   return (
       <>
