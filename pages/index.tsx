@@ -1,12 +1,12 @@
 import { Text, Page, Checkbox, Input, Textarea, Divider, Slider, Button, useToasts, Card, Link } from '@geist-ui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { orgName, mailingLists, htmlContentPlaceholder } from '../components/constants';
 import { Navbar } from '../components/Navbar';
-import { useActiveUser } from '../components/UserProvider';
+import { useActiveUser, UserCurrentStatus, UserProvider } from '../components/UserProvider';
 import router, { useRouter } from 'next/router';
 
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
   const { user, status } = useActiveUser();
   const [previewWidth, setPreviewWidth] = useState(400);
   const [, setToast] = useToasts();
@@ -15,10 +15,17 @@ export default function Home(): JSX.Element {
 
   const router = useRouter();
 
+  useEffect(() => {
+    if (status == UserCurrentStatus.LoggedOut) {
+      (window as any).location = "/auth/login?r=/discord";
+    }
+  }, [status])
+
 
   return (
       <>
         <Navbar />
+        <p>Logged in as: {user?.email}</p>
         <Page className="homepage-container">
           <Text h2 style={{ marginBottom: '5px' }}>
             Harmonia
@@ -51,3 +58,11 @@ export default function Home(): JSX.Element {
       </>
   );
 }
+
+export default function HomePage() {
+  return (
+    <UserProvider>
+      <Home/>
+    </UserProvider>
+  )
+} 
