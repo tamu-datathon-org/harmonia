@@ -4,14 +4,15 @@ import session from 'express-session';
 import { authenticatedRoute } from '../../libs/middleware'
 const DiscordStrategy = require('passport-discord').Strategy;
 const mongoose = require('mongoose');
+const Discord = require('discord.js');
 
 const db = mongoose.connect(process.env.MONGODB_URI,
   { useNewUrlParser: true, useUnifiedTopology: true})
 
 const UserSchema = new mongoose.Schema({
-  authId: {type: String, required: true },
   discordId: { type: String, required: true },
-  username: { type: String, required: true }
+  username: { type: String, required: true },
+  authId: {type: String, required: true }
 });
 
 const DiscordUser = mongoose.models.User || mongoose.model('User', UserSchema);
@@ -20,13 +21,11 @@ db.then(() => console.log('Connected to MongoDB')).catch(err => console.log(err)
 
 // serialize user into request object
 passport.serializeUser((user, done) => {
-  console.log("SERIALIZE");
   done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
-  console.log("DESERIALIZE");
-  const user = await DiscordUser.findOne({ discordId: id }); //findById() <-- this finds by mongodbId instead of discordId, tried casting discordId to mongoId
+  const user = await DiscordUser.findOne({ discordId: id }); //originally findById() <-- this finds by mongodbId instead of discordId (tries casting discordId to mongoId)
   if(user)
     done(null, user);
 });
@@ -35,7 +34,7 @@ passport.use(new DiscordStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   callbackURL: process.env.CLIENT_REDIRECT,
-  scope: ['identify', 'guilds']
+  scope: ['identify', 'guilds.join']
 }, async (accessToken, refreshToken, profile, done) => {
   done(null, profile);
 }));
@@ -53,38 +52,34 @@ handler.use(session({
 handler.use(passport.initialize());
 handler.use(passport.session());
 
+const guildId = { id: '646167787756191744' }; // unique id for server in discord
+
 handler.get(passport.authenticate('discord', {
     failureRedirect: '/forbidden'
 }), authenticatedRoute(async (req, res, tdUser) => {
-  console.log("GOT HERE");
-  try { 
+  try {
+    const client = new Discord.Client();
+    await client.login('ODY5MDYwMDQzNDgyNDY4Mzky.YP4tPA.mtmDjum5jWRrcbZX32xwLG5cUnQ');
+    const guild = new Discord.Guild(client, guildId);
+    const disc_user = new Discord.User(client, req.user);
+    await guild.addMember(disc_user, { accessToken: req.user.accessToken, nick: tdUser.firstName, roles: [new Discord.Role(client, { id: '717047679519293530' }, guild)] });
     const profile = req.user;
-    console.log("tdUser", tdUser);
-    console.log("discord username:", profile.id);
     const user = await DiscordUser.findOne({ discordId: profile.id });
-    console.log(user);
-    if(user) { // if user is found
-      console.log("User exists.");
-      //done(null, user);
-    } else {
-      console.log("User does not exist.");
+    if(!user) { // if user does not exist in database, create them
       const newUser = await DiscordUser.create({
-          discordId: profile.id,
-          username: profile.username,
-          authId: tdUser.authId
+        discordId: profile.id,
+        username: profile.username,
+        authId: tdUser.authId
       });
       const savedUser = await newUser.save();
-      //done(null, savedUser);
     }
     res.statusCode = 302;
     res.setHeader("Location", "http://localhost:3000/discord/");
     res.end();
-    console.log(req.user.username);
   }
   catch(err) {
     console.log(err);
     res.status(500).send(err);
-    //done(err, null);
   }
 }));
 
