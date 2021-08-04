@@ -50,6 +50,23 @@ iframe {
 .preview-dimensions-input-container {
   margin-bottom: 10px;
 }
+.step-1 {
+  display: flex;
+  align-items: flex-start;
+}
+
+.step-2 {
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.step-3 {
+  display: flex;
+  margin-top: 30px;
+  align-items: flex-start;
+}
+
 
 .circle {
   width: 100px;
@@ -59,29 +76,52 @@ iframe {
   font-size: 32px;
   border: 3px solid #000;
   float: left;
+  margin-right: 20px;
+
+  background-image: linear-gradient(green, green);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 100% 0%;
+  transition: background-size .5s, color .5s;
 }
 
 .sign-in-discord-button {
   background-color: white;
   padding: 10px 29px;
-  border-radius: 4px;
+  border-radius: 0;
   color: black;
   border: 2px solid black;
+  font-weight: bold;
 }
 
 .server-rules-button-1 {
-  background-color: white;
+  color: white;
+  background-color: #04AA6D;
   padding: 10px 29px;
-  border-radius: 4px;
-  color: black;
-  border: 2px solid black;
+  border-radius: 0;
+  border: 0.32rem solid #06c780;
+  transition-duration: 0.4s;
+  background: linear-gradient(to top left, #05b876 0%, #05a56a 70%);
+  margin-left: 120px;
+}
+
+.server-rules-button-1:hover {
+  color: rgb(73, 71, 71);
+  background: transparent;
 }
 
 .server-rules-button-2 {
-  padding-left: 10px;
-  background-color: white;
+  color: white;
+  background-color: #ED4245;
   padding: 10px 29px;
-  border-radius: 4px;
-  color: black;
-  border: 2px solid black;
+  border-radius: 0;
+  border: 0.32rem solid #ee5759;
+  transition-duration: 0.4s;
+  background: linear-gradient(to top left, #ec4e51 0%, #dd3336 70%);
+  margin-left: 20px;
+}
+
+.server-rules-button-2:hover {
+  color: rgb(73, 71, 71);
+  background: transparent;
 }

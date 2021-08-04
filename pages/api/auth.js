@@ -52,17 +52,17 @@ handler.use(session({
 handler.use(passport.initialize());
 handler.use(passport.session());
 
-const guildId = { id: '646167787756191744' }; // unique id for server in discord
+const guildId = { id: process.env.GUILD_ID }; // unique id for server in discord
 
 handler.get(passport.authenticate('discord', {
     failureRedirect: '/forbidden'
 }), authenticatedRoute(async (req, res, tdUser) => {
   try {
     const client = new Discord.Client();
-    await client.login('ODY5MDYwMDQzNDgyNDY4Mzky.YP4tPA.mtmDjum5jWRrcbZX32xwLG5cUnQ');
+    await client.login(process.env.DISCORDBOT_TOKEN); // harmonia token
     const guild = new Discord.Guild(client, guildId);
     const disc_user = new Discord.User(client, req.user);
-    await guild.addMember(disc_user, { accessToken: req.user.accessToken, nick: tdUser.firstName, roles: [new Discord.Role(client, { id: '717047679519293530' }, guild)] });
+    await guild.addMember(disc_user, { accessToken: req.user.accessToken, nick: tdUser.firstName });
     const profile = req.user;
     const user = await DiscordUser.findOne({ discordId: profile.id });
     if(!user) { // if user does not exist in database, create them
@@ -74,7 +74,7 @@ handler.get(passport.authenticate('discord', {
       const savedUser = await newUser.save();
     }
     res.statusCode = 302;
-    res.setHeader("Location", "http://localhost:3000/discord/");
+    res.setHeader("Location", "/discord/");
     res.end();
   }
   catch(err) {
