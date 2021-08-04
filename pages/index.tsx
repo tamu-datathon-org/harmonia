@@ -9,6 +9,7 @@ import router, { useRouter } from 'next/router';
 function Home(): JSX.Element {
   const { user, status } = useActiveUser();
   const [discStatus, setDiscStatus] = useState<{isInServer : boolean, isMember : boolean} | undefined>();
+  const [disableRuleButtons, setDisableRuleButtons] = useState(false);
 
 
   const router = useRouter();
@@ -25,6 +26,7 @@ function Home(): JSX.Element {
   }
 
   const agree = async () => {
+    setDisableRuleButtons(true);
     try {
       await fetch("/discord/api/agree");
       setDiscStatus((oldValue) => ({...oldValue, isMember : true}));
@@ -33,6 +35,7 @@ function Home(): JSX.Element {
       setDiscStatus(undefined);
       console.error(err);
     }
+    setDisableRuleButtons(false);
   }
 
   useEffect(() => {
@@ -84,7 +87,7 @@ function Home(): JSX.Element {
                   2. No Racism<br></br>
                   3. You also follow the MLH Rules
                 </Text>
-                <button className={`server-rules-button-1`} id='accept' onClick={agree}>I Agree</button><button id='deny' className="server-rules-button-2">Nope</button>
+                <button className={`server-rules-button-1`} id='accept' onClick={agree} disabled={disableRuleButtons}>I Agree</button><button id='deny' className="server-rules-button-2" disabled={disableRuleButtons}>Nope</button>
               </>              
             )}
             </div>

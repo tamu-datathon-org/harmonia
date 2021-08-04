@@ -41,8 +41,9 @@ handler.get(authenticatedRoute(async (req, res, tdUser) => {
     await client.login(process.env.DISCORDBOT_TOKEN); // harmonia token
     const guild = new Discord.Guild(client, guildId);
     try {
+        const guildFetchPromise = guild.fetch();
         const user = await DiscordUser.findOne({ authId: tdUser.authId });
-        await guild.fetch();
+        await guildFetchPromise;
         const discUser = await guild.members.fetch(user.discordId);
         const isMember = discUser.roles.cache.has(process.env.ROLE_ID)
         if (discUser) {
