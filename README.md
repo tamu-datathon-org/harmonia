@@ -5,4 +5,4 @@ npm install
 npm run dev
 ```
 
-Visit [http://localhost:3000/mailing](http://localhost:3000/mailing) on your browser.
+Visit [http://localhost:3000/discord](http://localhost:3000/discord) on your browser.
