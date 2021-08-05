@@ -1,4 +1,5 @@
-import { Text, Page, Spinner } from '@geist-ui/react';
+import { Text, Page, Spinner, Button } from '@geist-ui/react';
+import { UserPlus, Check, X, Smile } from '@geist-ui/react-icons'
 import { useState, useEffect, SetStateAction } from 'react';
 import { orgName, mailingLists, htmlContentPlaceholder } from '../components/constants';
 import { Navbar } from '../components/Navbar';
@@ -8,7 +9,7 @@ import router, { useRouter } from 'next/router';
 
 function Home(): JSX.Element {
   const { user, status } = useActiveUser();
-  const [discStatus, setDiscStatus] = useState<{isInServer : boolean, isMember : boolean} | undefined>();
+  const [discStatus, setDiscStatus] = useState<{isInServer : boolean, isMember : boolean, loading : boolean, } | undefined>();
 
 
   const router = useRouter();
@@ -26,8 +27,9 @@ function Home(): JSX.Element {
 
   const agree = async () => {
     try {
+      setDiscStatus((oldValue) => ({...oldValue, loading : true}));
       await fetch("/discord/api/agree");
-      setDiscStatus((oldValue) => ({...oldValue, isMember : true}));
+      setDiscStatus((oldValue) => ({...oldValue, isMember : true, loading : false}));
     }
     catch(err) {
       setDiscStatus(undefined);
@@ -42,7 +44,7 @@ function Home(): JSX.Element {
   }, [status])
 
   useEffect(() => {
-    if(user) {
+    if (user) {
       fetchStatus();
     }
     
@@ -66,7 +68,7 @@ function Home(): JSX.Element {
                 Connect your Discord Account
               </Text>
               {!discStatus.isInServer && (
-                <button className="sign-in-discord-button" type="button" onClick={() => {router.push('/api/auth');}}>Sign In With Discord</button>              
+                <Button auto type="secondary" ghost size="large" icon={<UserPlus/>} onClick={() => {router.push('/api/auth');}}>Sign In With Discord</Button>              
               )}
             </div>
           </div>
@@ -84,8 +86,17 @@ function Home(): JSX.Element {
                   2. No Racism<br></br>
                   3. You also follow the MLH Rules
                 </Text>
-                <button className={`server-rules-button-1`} id='accept' onClick={agree}>I Agree</button><button id='deny' className="server-rules-button-2">Nope</button>
-              </>              
+                {!discStatus.loading ? (
+                  <>
+                    <Button auto type="success" ghost size="large" icon={<Check/>} className={`server-rules-button-1`} onClick={ agree }>Agree</Button>
+                  </>
+                ) : (
+                  <>
+                    <Button loading auto type="success" ghost size="large" icon={<Check/>} className={`server-rules-button-1`}>Agree</Button>
+                  </>
+                )}
+                <Button auto type="error" ghost size="large" icon={<X/>} className={`server-rules-button-2`}>Nope</Button>
+              </>
             )}
             </div>
           </div>
@@ -97,7 +108,7 @@ function Home(): JSX.Element {
                 Come on in!
               </Text>
               {discStatus.isInServer && discStatus.isMember && (
-                <button className="sign-in-discord-button"><a href="https://discord.com/channels/755441182951211028/755442777931907082">Open the Discord Server</a></button>
+                <Button auto ghost size="large" icon={<Smile/>}><a href="https://discord.com/channels/755441182951211028/755442777931907082" style={{ color: 'black' }}>Open the Discord Server</a></Button>
               )}
               </div>
           </div></>

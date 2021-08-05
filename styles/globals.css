@@ -96,28 +96,28 @@ iframe {
 
 .server-rules-button-1 {
   color: white;
-  background-color: #04AA6D;
+  /*background-color: #04AA6D;*/
   padding: 10px 29px;
   border-radius: 0;
-  border: 0.32rem solid #06c780;
+  /*border: 0.32rem solid #06c780;*/
   transition-duration: 0.4s;
-  background: linear-gradient(to top left, #05b876 0%, #05a56a 70%);
-  margin-left: 120px;
+  /*background: linear-gradient(to top left, #05b876 0%, #05a56a 70%);*/
 }
 
 .server-rules-button-1:hover {
   color: rgb(73, 71, 71);
+  background-color: #04AA6D;
   background: transparent;
 }
 
 .server-rules-button-2 {
   color: white;
-  background-color: #ED4245;
+  /*background-color: #ED4245;*/
   padding: 10px 29px;
   border-radius: 0;
-  border: 0.32rem solid #ee5759;
+  /*border: 0.32rem solid #ee5759;*/
   transition-duration: 0.4s;
-  background: linear-gradient(to top left, #ec4e51 0%, #dd3336 70%);
+  /*background: linear-gradient(to top left, #ec4e51 0%, #dd3336 70%);*/
   margin-left: 20px;
 }
 
