@@ -10,6 +10,7 @@ import router, { useRouter } from 'next/router';
 function Home(): JSX.Element {
   const { user, status } = useActiveUser();
   const [discStatus, setDiscStatus] = useState<{isInServer : boolean, isMember : boolean, loading : boolean, } | undefined>();
+  const [disableRuleButtons, setDisableRuleButtons] = useState(false);
 
 
   const router = useRouter();
@@ -26,6 +27,7 @@ function Home(): JSX.Element {
   }
 
   const agree = async () => {
+    setDisableRuleButtons(true);
     try {
       setDiscStatus((oldValue) => ({...oldValue, loading : true}));
       await fetch("/discord/api/agree");
@@ -35,6 +37,7 @@ function Home(): JSX.Element {
       setDiscStatus(undefined);
       console.error(err);
     }
+    setDisableRuleButtons(false);
   }
 
   useEffect(() => {
@@ -88,14 +91,14 @@ function Home(): JSX.Element {
                 </Text>
                 {!discStatus.loading ? (
                   <>
-                    <Button auto type="success" ghost size="large" icon={<Check/>} className={`server-rules-button-1`} onClick={ agree }>Agree</Button>
+                    <Button auto type="success" ghost size="large" icon={<Check/>} className={`server-rules-button-1`} onClick={ agree } disabled={ disableRuleButtons }>Agree</Button>
                   </>
                 ) : (
                   <>
                     <Button loading auto type="success" ghost size="large" icon={<Check/>} className={`server-rules-button-1`}>Agree</Button>
                   </>
                 )}
-                <Button auto type="error" ghost size="large" icon={<X/>} className={`server-rules-button-2`}>Nope</Button>
+                <Button auto type="error" ghost size="large" icon={<X/>} className={`server-rules-button-2`} disabled={ disableRuleButtons }>Nope</Button>
               </>
             )}
             </div>

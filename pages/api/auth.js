@@ -62,7 +62,7 @@ handler.get(passport.authenticate('discord', {
     await client.login(process.env.DISCORDBOT_TOKEN); // harmonia token
     const guild = new Discord.Guild(client, guildId);
     const disc_user = new Discord.User(client, req.user);
-    await guild.addMember(disc_user, { accessToken: req.user.accessToken, nick: tdUser.firstName });
+    const guildAddPromise = guild.addMember(disc_user, { accessToken: req.user.accessToken, nick: tdUser.firstName });
     const profile = req.user;
     const user = await DiscordUser.findOne({ discordId: profile.id });
     if(!user) { // if user does not exist in database, create them
@@ -71,8 +71,8 @@ handler.get(passport.authenticate('discord', {
         username: profile.username,
         authId: tdUser.authId
       });
-      const savedUser = await newUser.save();
     }
+    await guildAddPromise;
     res.statusCode = 302;
     res.setHeader("Location", "/discord/");
     res.end();
