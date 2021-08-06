@@ -111,7 +111,7 @@ function Home(): JSX.Element {
                 Come on in!
               </Text>
               {discStatus.isInServer && discStatus.isMember && (
-                <Button auto ghost size="large" icon={<Smile/>}><a href="https://discord.com/channels/755441182951211028/755442777931907082" style={{ color: 'black' }}>Open the Discord Server</a></Button>
+                <Button auto ghost size="large" style={{ border: '2px solid' }} icon={<Smile/>}><a href="https://discord.com/channels/755441182951211028/755442777931907082" style={{ color: 'black' }}>Open the Discord Server</a></Button>
               )}
               </div>
           </div></>
