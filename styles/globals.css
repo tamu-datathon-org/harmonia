@@ -125,3 +125,43 @@ iframe {
   color: rgb(73, 71, 71);
   background: transparent;
 }
+
+.fade-in-text {
+  padding-bottom: 15px;
+  animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -webkit-animation: fadein 2s;
+  -o-animation: fadein 2s;
+}
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* firefox */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* safari/chrome */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein { /* opera */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
+}

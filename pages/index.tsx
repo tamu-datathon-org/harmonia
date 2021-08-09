@@ -84,7 +84,7 @@ function Home(): JSX.Element {
               </Text>
               {discStatus.isInServer && !discStatus.isMember && (
                 <>
-                <Text h4>
+                <Text h4 className={`fade-in-text`}>
                   1. Don't be an asshole<br></br>
                   2. No Racism<br></br>
                   3. You also follow the MLH Rules
