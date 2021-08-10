@@ -5,12 +5,14 @@ import { orgName, mailingLists, htmlContentPlaceholder } from '../components/con
 import { Navbar } from '../components/Navbar';
 import { useActiveUser, UserCurrentStatus, UserProvider } from '../components/UserProvider';
 import router, { useRouter } from 'next/router';
+import { join } from 'node:path';
 
 
 function Home(): JSX.Element {
   const { user, status } = useActiveUser();
   const [discStatus, setDiscStatus] = useState<{isInServer : boolean, isMember : boolean, loading : boolean, } | undefined>();
   const [disableRuleButtons, setDisableRuleButtons] = useState(false);
+  const [joinServer, setJoinServer] = useState(false);
 
 
   const router = useRouter();
@@ -38,6 +40,10 @@ function Home(): JSX.Element {
       console.error(err);
     }
     setDisableRuleButtons(false);
+  }
+
+  const changeIcon = async () => {
+    setJoinServer(true);
   }
 
   useEffect(() => {
@@ -77,7 +83,7 @@ function Home(): JSX.Element {
           </div>
 
           <div className="step-2">
-            <div className="circle" id="circle-2">{discStatus.isInServer && discStatus.isMember ? '✔️' : '2'}</div>
+            <div className="circle">{discStatus.isInServer && discStatus.isMember ? '✔️' : '2'}</div>
             <div>
               <Text h2>
                 Agree to the Server Rules
@@ -105,13 +111,13 @@ function Home(): JSX.Element {
           </div>
       
           <div className="step-3" id="step-3">
-            <div className="circle">3</div>
+            <div className="circle">{joinServer ? '✔️' : '3'}</div>
             <div>
               <Text h2>
                 Come on in!
               </Text>
               {discStatus.isInServer && discStatus.isMember && (
-                <Button auto ghost size="large" style={{ border: '2px solid' }} icon={<Smile/>}><a href="https://discord.com/channels/755441182951211028/755442777931907082" style={{ color: 'black' }}>Open the Discord Server</a></Button>
+                <Button auto ghost size="large" style={{ border: '2px solid' }} icon={<Smile/>}><a onClick={ changeIcon } href="https://discord.com/channels/755441182951211028/755442777931907082" target="_blank" style={{ color: 'black' }}>Open the Discord Server</a></Button>
               )}
               </div>
           </div></>
