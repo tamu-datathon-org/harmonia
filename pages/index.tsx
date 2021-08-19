@@ -64,15 +64,16 @@ function Home(): JSX.Element {
       <>
         <Navbar />
         <Page className="homepage-container">
-          <Text h2 style={{ marginBottom: '5px' }}>
-            Harmonia
+          <Text h2 className="title">
+            Join the TD Discord!
           </Text>
-          <Text className="sub-heading">{orgName} Discord Authentication</Text>
           {discStatus ? (
             <>
             <div className="step-1">
-            <div className="circle">{discStatus.isInServer ? '✔️' : '1'}</div>
-            <div>
+            <div className="circle">
+              <div className="circle-content">{discStatus.isInServer ? '✔️' : '1'}</div>
+            </div>
+            <div style={{marginLeft: '2.5vw'}}>
               <Text h2>
                 Connect your Discord Account
               </Text>
@@ -83,8 +84,10 @@ function Home(): JSX.Element {
           </div>
 
           <div className="step-2">
-            <div className="circle">{discStatus.isInServer && discStatus.isMember ? '✔️' : '2'}</div>
-            <div>
+            <div className="circle">
+              <div className="circle-content">{discStatus.isInServer && discStatus.isMember ? '✔️' : '2'}</div>
+            </div>
+            <div style={{marginLeft: '2.5vw'}}>
               <Text h2>
                 Agree to the Server Rules
               </Text>
@@ -111,8 +114,10 @@ function Home(): JSX.Element {
           </div>
       
           <div className="step-3" id="step-3">
-            <div className="circle">{joinServer ? '✔️' : '3'}</div>
-            <div>
+            <div className="circle">
+              <div className="circle-content">{joinServer ? '✔️' : '3'}</div>
+            </div>
+            <div style={{marginLeft: '2.5vw'}}>
               <Text h2>
                 Come on in!
               </Text>

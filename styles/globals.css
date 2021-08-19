@@ -50,6 +50,13 @@ iframe {
 .preview-dimensions-input-container {
   margin-bottom: 10px;
 }
+
+.title {
+  font-size: 5em;
+  margin-bottom: 55px;
+  text-align: center;
+}
+
 .step-1 {
   display: flex;
   align-items: flex-start;
@@ -69,20 +76,22 @@ iframe {
 
 
 .circle {
-  width: 100px;
-  line-height: 100px;
+  width: 20%;
   border-radius: 50%;
+  padding-bottom: 5%;
   text-align: center;
-  font-size: 32px;
-  border: 3px solid #000;
+  border: 4px solid #000;
   float: left;
-  margin-right: 20px;
+}
 
-  background-image: linear-gradient(green, green);
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: 100% 0%;
-  transition: background-size .5s, color .5s;
+.circle-content {
+  float: left;
+  line-height: 1;
+  margin-top: -0.4em;
+  padding-top: 50%;
+  text-align: center;
+  width: 100%;
+  font-size: 5vw;
 }
 
 .sign-in-discord-button {
