@@ -44,13 +44,12 @@ handler.get(authenticatedRoute(async (req, res, tdUser) => {
         .then(() => guild = new Discord.Guild(client, guildId))
         .then(() => guild.fetch()),
     ]);
-
+    
     const discUser = await guild.members.fetch(user.discordId);
     const role = new Discord.Role(client, { id: process.env.ROLE_ID }, guild);
     await discUser.roles.add(role);
     return res.status(200).send();
   }
-  //roles: [new Discord.Role(client, { id: '717047679519293530' }, guild)]
   catch(err) {
     console.log(err);
     res.status(500).send(err);

@@ -75,7 +75,7 @@ function Home(): JSX.Element {
             </div>
             <div style={{marginLeft: '2.5vw'}}>
               <Text h2>
-                Connect your Discord Account
+                Connect your Discord
               </Text>
               {!discStatus.isInServer && (
                 <Button auto type="secondary" ghost size="large" icon={<UserPlus/>} onClick={() => {router.push('/api/auth');}}>Sign In With Discord</Button>              
@@ -94,9 +94,9 @@ function Home(): JSX.Element {
               {discStatus.isInServer && !discStatus.isMember && (
                 <>
                 <Text h4 className={`fade-in-text`}>
-                  1. Don't be an asshole<br></br>
-                  2. No Racism<br></br>
-                  3. You also follow the MLH Rules
+                  1. Follow the MLH Code of Conduct<br></br>
+                  2. Follow the Discord Community Guidelines and Terms of Service.<br></br>
+                  3. No spamming, foul language, or rude behavior.
                 </Text>
                 {!discStatus.loading ? (
                   <>
