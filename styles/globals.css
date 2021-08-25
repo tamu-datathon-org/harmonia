@@ -76,22 +76,22 @@ iframe {
 
 
 .circle {
-  width: 15%;
+  width: 10%;
   border-radius: 50%;
-  padding-bottom: 2.5%;
+  padding-bottom: 1.5%;
   text-align: center;
-  border: 4px solid #000;
+  border: 3px solid #000;
   float: left;
 }
 
 .circle-content {
   float: left;
   line-height: 1;
-  margin-top: -0.4em;
+  margin-top: -0.6em;
   padding-top: 50%;
   text-align: center;
   width: 100%;
-  font-size: 5vw;
+  font-size: 2.7vw;
 }
 
 .sign-in-discord-button {

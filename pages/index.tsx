@@ -73,7 +73,7 @@ function Home(): JSX.Element {
             <div className="circle">
               <div className="circle-content">{discStatus.isInServer ? '✔️' : '1'}</div>
             </div>
-            <div style={{marginLeft: '2.5vw'}}>
+            <div style={{marginLeft: '1.5vw'}}>
               <Text h2>
                 Connect your Discord
               </Text>
@@ -87,7 +87,7 @@ function Home(): JSX.Element {
             <div className="circle">
               <div className="circle-content">{discStatus.isInServer && discStatus.isMember ? '✔️' : '2'}</div>
             </div>
-            <div style={{marginLeft: '2.5vw'}}>
+            <div style={{marginLeft: '1.5vw'}}>
               <Text h2>
                 Agree to the Server Rules
               </Text>
@@ -117,7 +117,7 @@ function Home(): JSX.Element {
             <div className="circle">
               <div className="circle-content">{joinServer ? '✔️' : '3'}</div>
             </div>
-            <div style={{marginLeft: '2.5vw'}}>
+            <div style={{marginLeft: '1.5vw'}}>
               <Text h2>
                 Come on in!
               </Text>
