@@ -12,12 +12,11 @@ const db = mongoose.connect(process.env.MONGODB_URI,
 const UserSchema = new mongoose.Schema({
   discordId: { type: String, required: true },
   username: { type: String, required: true },
+  discriminator: {type: String, required: true },
   authId: {type: String, required: true }
 });
 
 const DiscordUser = mongoose.models.User || mongoose.model('User', UserSchema);
-
-db.then(() => console.log('Connected to MongoDB')).catch(err => console.log(err));
 
 // serialize user into request object
 passport.serializeUser((user, done) => {
@@ -65,10 +64,11 @@ handler.get(passport.authenticate('discord', {
     const guildAddPromise = guild.addMember(disc_user, { accessToken: req.user.accessToken, nick: tdUser.firstName });
     const profile = req.user;
     const user = await DiscordUser.findOne({ discordId: profile.id });
-    if(!user) { // if user does not exist in database, create them
+    if (!user) { // if user does not exist in database, create them
       const newUser = await DiscordUser.create({
         discordId: profile.id,
         username: profile.username,
+        discriminator: profile.discriminator,
         authId: tdUser.authId
       });
     }
