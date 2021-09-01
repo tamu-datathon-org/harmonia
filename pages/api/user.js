@@ -20,24 +20,24 @@ const DiscordUser = mongoose.models.User || mongoose.model('User', UserSchema);
 
 const handler = nextConnect();
 
-  handler.get(authenticatedRoute(async (req, res) => {
-    try {
-      if (req.query.userAuthId) {
-        const userAuthId = req.query.userAuthId;
-        const user = await DiscordUser.find({ 'authId': userAuthId });
-        res.json({ userAuthId: userAuthId,
-                   discordInfo: user[0].username + "#" + user[0].discriminator });
-      } else if (req.query.discordInfo) {
-        const discordInfo = req.query.discordInfo;
-        const user = await DiscordUser.find({ 'username': discordInfo });
-        res.json({ userAuthId: user[0].authId,
-                   discordInfo: discordInfo + "#" + user[0].discriminator});
-      }
+handler.get(authenticatedRoute(async (req, res) => {
+  try {
+    if (req.query.userAuthId) {
+      const userAuthId = req.query.userAuthId;
+      const user = await DiscordUser.find({ 'authId': userAuthId });
+      res.json({ userAuthId: userAuthId,
+                  discordInfo: user[0].username + "#" + user[0].discriminator });
+    } else if (req.query.discordInfo) {
+      const discordInfo = req.query.discordInfo;
+      const user = await DiscordUser.find({ 'username': discordInfo });
+      res.json({ userAuthId: user[0].authId,
+                  discordInfo: discordInfo + "#" + user[0].discriminator});
     }
-    catch(err) {
-      console.log(err);
-      res.status(500).send(err);
-    }
+  }
+  catch(err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
 }));
 
 export default handler;
