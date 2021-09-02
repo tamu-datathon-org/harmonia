@@ -23,10 +23,10 @@ const handler = nextConnect();
 handler.get(authenticatedRoute(async (req, res) => {
   try {
     const users = await DiscordUser.find();
-    const numUsers = await DiscordUser.countDocuments().then();
+    //const numUsers = await DiscordUser.countDocuments().then();
     var allUsers = [];
     var i = 0;
-    while (i < numUsers) {
+    while (users[i] != undefined) {
       allUsers.push(users[i].username + "#" + users[i].discriminator);
       i += 1;
     }
