@@ -1,4 +1,4 @@
-import { Text, Page, Spinner, Button } from '@geist-ui/react';
+import { Text, Page, Spinner, Button, Loading } from '@geist-ui/react';
 import { UserPlus, Check, X, Smile } from '@geist-ui/react-icons'
 import { useState, useEffect, SetStateAction } from 'react';
 import { orgName, mailingLists, htmlContentPlaceholder } from '../components/constants';
@@ -19,7 +19,9 @@ function Home(): JSX.Element {
 
   const fetchStatus = async () => {
     try {
+      console.log("start");
       const data = await fetch("/discord/api/status").then((res) => res.json());
+      console.log("TAKES SO LONG TO GET HERE");
       setDiscStatus(data);
     }
     catch(err) {
@@ -64,7 +66,7 @@ function Home(): JSX.Element {
       <>
         <Navbar />
         <Page className="homepage-container">
-          <Text h2 className="title">
+          <Text h2 className="title" style={{color: '#632ED2'}}>
             Join the TD Discord!
           </Text>
           {discStatus ? (
@@ -127,7 +129,9 @@ function Home(): JSX.Element {
               </div>
           </div></>
           ) : (
-            <Spinner size="large"></Spinner>
+            //<Spinner size="large">
+              <Loading>Fetching your Discord Status</Loading>
+            //</Spinner>
           )}
           
         </Page>

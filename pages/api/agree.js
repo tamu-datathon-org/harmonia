@@ -2,7 +2,6 @@ import nextConnect from 'next-connect'
 import passport from 'passport'
 import session from 'express-session';
 import { authenticatedRoute } from '../../libs/middleware'
-const DiscordStrategy = require('passport-discord').Strategy;
 const mongoose = require('mongoose');
 const Discord = require('discord.js');
 
@@ -12,7 +11,7 @@ const db = mongoose.connect(process.env.MONGODB_URI,
 const UserSchema = new mongoose.Schema({
   discordId: { type: String, required: true },
   username: { type: String, required: true },
-  discriminator: {type: String, required: true },
+  discriminator: {type: String, required: true }, 
   authId: {type: String, required: true }
 });
 

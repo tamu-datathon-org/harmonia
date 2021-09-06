@@ -12,7 +12,7 @@ const db = mongoose.connect(process.env.MONGODB_URI,
 const UserSchema = new mongoose.Schema({
   discordId: { type: String, required: true },
   username: { type: String, required: true },
-  discriminator: {type: String, required: true },
+  discriminator: {type: String, required: true }, 
   authId: {type: String, required: true }
 });
 
