@@ -33,7 +33,6 @@ handler.use(passport.session());
 const guildId = { id: process.env.GUILD_ID }; // unique id for server in discord
 
 handler.get(authenticatedRoute(async (req, res, tdUser) => {
-  console.log("start");
   try {
     const client = new Discord.Client();
     await client.login(process.env.DISCORDBOT_TOKEN); // harmonia token
@@ -45,7 +44,6 @@ handler.get(authenticatedRoute(async (req, res, tdUser) => {
       const discUser = await guild.members.fetch(user.discordId);
       const isMember = discUser.roles.cache.has(process.env.ROLE_ID)
       if (discUser) {
-        console.log("end");
         return res.status(200).json({isInServer : true, isMember})
       }
     }

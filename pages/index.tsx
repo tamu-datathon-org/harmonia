@@ -6,6 +6,8 @@ import { Navbar } from '../components/Navbar';
 import { useActiveUser, UserCurrentStatus, UserProvider } from '../components/UserProvider';
 import router, { useRouter } from 'next/router';
 import { join } from 'node:path';
+import Image from 'next/image';
+//import tdlogo from '../public/main.png';
 
 
 function Home(): JSX.Element {
@@ -66,65 +68,69 @@ function Home(): JSX.Element {
       <>
         <Navbar />
         <Page className="homepage-container">
-          <Text h2 className="title" style={{color: '#632ED2'}}>
-            Join the TD Discord!
+          <Text p className="title-1">
+            Join the
+            <Text h4 className="title-2">
+              TAMU Datathon Discord
+            </Text>
           </Text>
+          <div className="container">
           {discStatus ? (
             <>
             <div className="step-1">
-            <div className="circle">
-              <div className="circle-content">{discStatus.isInServer ? '✔️' : '1'}</div>
+            <div>
+              <div className="status">{discStatus.isInServer ? '✔️' : ''}1</div>
             </div>
             <div style={{marginLeft: '1.5vw'}}>
-              <Text h2>
+              <Text h4>
                 Connect your Discord
               </Text>
               {!discStatus.isInServer && (
-                <Button auto type="secondary" ghost size="large" icon={<UserPlus/>} onClick={() => {router.push('/api/auth');}}>Sign In With Discord</Button>              
+                <a role="button" className="btn sign-in-btn" style={{color: "white"}} onClick={() => {router.push('/api/auth');}}>Sign In With Discord</a>           
               )}
             </div>
           </div>
 
           <div className="step-2">
-            <div className="circle">
-              <div className="circle-content">{discStatus.isInServer && discStatus.isMember ? '✔️' : '2'}</div>
+            <div>
+              <div className="status">{discStatus.isInServer && discStatus.isMember ? '✔️' : ''}2</div>
             </div>
             <div style={{marginLeft: '1.5vw'}}>
-              <Text h2>
-                Agree to the Server Rules
+              <Text h4>
+                Agree to the Server Rules:
               </Text>
               {discStatus.isInServer && !discStatus.isMember && (
                 <>
-                <Text h4 className={`fade-in-text`}>
-                  1. Follow the MLH Code of Conduct<br></br>
-                  2. Follow the Discord Community Guidelines and Terms of Service.<br></br>
+                <Text p className={`fade-in-text`}>
+                  1. Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a><br></br>
+                  2. Follow the <a href="https://discord.com/guidelines">Discord Community Guidelines</a> and <a href="https://discord.com/terms">Terms of Service.</a><br></br>
                   3. No spamming, foul language, or rude behavior.
                 </Text>
                 {!discStatus.loading ? (
                   <>
-                    <Button auto type="success" ghost size="large" icon={<Check/>} className={`server-rules-button-1`} onClick={ agree } disabled={ disableRuleButtons }>Agree</Button>
+                    <a role="button" className="btn agree-btn" style={{color: "white"}} onClick={ agree }>Agree</a>
                   </>
                 ) : (
                   <>
-                    <Button loading auto type="success" ghost size="large" icon={<Check/>} className={`server-rules-button-1`}>Agree</Button>
+                    <a role="button" className="btn agree-btn" style={{color: "white"}}>Agree</a>
                   </>
                 )}
-                <Button auto type="error" ghost size="large" icon={<X/>} className={`server-rules-button-2`} disabled={ disableRuleButtons }>Nope</Button>
+                <a role="button" className="btn nope-btn" style={{color: "white"}}>Nope</a>
               </>
             )}
             </div>
           </div>
       
           <div className="step-3" id="step-3">
-            <div className="circle">
-              <div className="circle-content">{joinServer ? '✔️' : '3'}</div>
+            <div>
+              <div className="status">{joinServer ? '✔️' : ''}3</div>
             </div>
             <div style={{marginLeft: '1.5vw'}}>
-              <Text h2>
+              <Text h4>
                 Come on in!
               </Text>
-              {discStatus.isInServer && discStatus.isMember && (
-                <Button auto ghost size="large" style={{ border: '2px solid' }} icon={<Smile/>}><a onClick={ changeIcon } href="https://discord.com/channels/755441182951211028/755442777931907082" target="_blank" style={{ color: 'black' }}>Open the Discord Server</a></Button>
+              {discStatus.isInServer && discStatus.isMember && (   
+                <a href="/apply" role="button" className="btn apply-btn">Apply</a>
               )}
               </div>
           </div></>
@@ -133,7 +139,7 @@ function Home(): JSX.Element {
               <Loading>Fetching your Discord Status</Loading>
             //</Spinner>
           )}
-          
+          </div>
         </Page>
       </>
   );

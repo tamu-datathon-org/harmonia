@@ -13,7 +13,6 @@ nav {
   font-family: "Work Sans", sans-serif !important;
 }
 a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -51,54 +50,52 @@ iframe {
   margin-bottom: 10px;
 }
 
-.title {
-  font-size: 4em;
+.title-1 {
+  font-family: "Space Grotesk", sans-serif, monospace !important;
+  font-size: 2em;
+  text-align: center;
+}
+.title-2 {
+  font-family: "Space Grotesk", sans-serif, monospace !important;
+  font-size: 2em;
   margin-bottom: 55px;
   text-align: center;
 }
 
 .step-1 {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  padding-left: 20vw;
 }
 
 .step-2 {
   margin-top: 30px;
   display: flex;
-  align-items: flex-start;
+  padding-left: 20vw;
 }
 
 .step-3 {
   display: flex;
   margin-top: 30px;
-  align-items: flex-start;
+  padding-left: 20vw;
 }
 
-
-.circle {
-  width: 10%;
-  border-radius: 50%;
-  padding-bottom: 1.5%;
-  text-align: center;
-  border: 3px solid #000;
-  float: left;
-}
-
-.circle-content {
+.status {
   float: left;
   line-height: 1;
   margin-top: -0.6em;
   padding-top: 50%;
   text-align: center;
   width: 100%;
-  font-size: 2.7vw;
+  font-size: 30px;
+  font-family: VT323;
 }
 
 .sign-in-discord-button {
   background-color: white;
   padding: 10px 29px;
   border-radius: 0;
-  color: black;
+  color: white;
   border: 2px solid black;
   font-weight: bold;
 }
@@ -133,6 +130,54 @@ iframe {
 .server-rules-button-2:hover {
   color: rgb(73, 71, 71);
   background: transparent;
+}
+
+.sign-in-btn {
+  text-decoration: none;
+  font-size: 1.5rem;
+  border-radius: 0;
+  line-height: 2rem;
+  font-weight: bold;
+  border: 0.32rem solid #80FFD5;
+  background: linear-gradient(to top left, rgba(0,195,195,0.486275) 0%, rgba(0,226,226,0.823529) 70%);
+  font-family: "Space Grotesk", sans-serif, monospace !important;
+}
+
+.agree-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  border-radius: 0;
+  line-height: 2rem;
+  font-weight: bold;
+  border: 0.32rem solid #80FFD5;
+  background: linear-gradient(to top left, rgba(0,195,195,0.486275) 0%, rgba(0,226,226,0.823529) 70%);
+  font-family: "Space Grotesk", sans-serif, monospace !important;
+}
+
+.nope-btn {
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  border-radius: 0;
+  line-height: 2rem;
+  font-weight: bold;
+  border: 0.32rem solid #ffc3e7;
+  background: linear-gradient(to top left, rgba(195,92,195,1) 0%, rgb(229,107,200,1) 70%);
+  font-family: "Space Grotesk", sans-serif, monospace !important;
+}
+
+.apply-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  border-radius: 0;
+  line-height: 2rem;
+  font-weight: bold;
+  border: 0.32rem solid #80FFD5;
+  background: linear-gradient(to top left, rgba(0,195,195,0.486275) 0%, rgba(0,226,226,0.823529) 70%);
+  font-family: "Space Grotesk", sans-serif, monospace !important;
 }
 
 .fade-in-text {
