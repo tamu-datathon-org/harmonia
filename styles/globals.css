@@ -50,6 +50,12 @@ iframe {
   margin-bottom: 10px;
 }
 
+.td-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .title-1 {
   font-family: "Space Grotesk", sans-serif, monospace !important;
   font-size: 2em;
