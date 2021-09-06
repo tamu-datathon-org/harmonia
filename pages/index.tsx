@@ -102,9 +102,9 @@ function Home(): JSX.Element {
               {discStatus.isInServer && !discStatus.isMember && (
                 <>
                 <Text p className={`fade-in-text`}>
-                  1. Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a><br></br>
-                  2. Follow the <a href="https://discord.com/guidelines">Discord Community Guidelines</a> and <a href="https://discord.com/terms">Terms of Service.</a><br></br>
-                  3. No spamming, foul language, or rude behavior.
+                  <img src="/discord/icons/Cube-Pink.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a><br></br>
+                  <img src="/discord/icons/Cube-Green.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://discord.com/guidelines">Discord Community Guidelines</a> and <a href="https://discord.com/terms">Terms of Service.</a><br></br>
+                  <img src="/discord/icons/Cube-Yellow.svg" style={{paddingRight: '1vw'}}/> No spamming, foul language, or rude behavior.
                 </Text>
                 {!discStatus.loading ? (
                   <>

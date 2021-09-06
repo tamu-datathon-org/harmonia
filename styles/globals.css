@@ -71,19 +71,19 @@ iframe {
 .step-1 {
   display: flex;
   align-items: center;
-  padding-left: 17vw;
+  padding-left: 14vw;
 }
 
 .step-2 {
   margin-top: 30px;
   display: flex;
-  padding-left: 17vw;
+  padding-left: 14vw;
 }
 
 .step-3 {
   display: flex;
   margin-top: 30px;
-  padding-left: 17vw;
+  padding-left: 14vw;
 }
 
 .status {
@@ -143,18 +143,6 @@ iframe {
   border: 0.32rem solid #80FFD5;
   background: linear-gradient(to top left, rgba(0,195,195,0.486275) 0%, rgba(0,226,226,0.823529) 70%);
   font-family: "Space Grotesk", sans-serif, monospace !important;
-}
-
-.float-container {
-  border: 3px solid #fff;
-  padding: 20px;
-}
-
-.float-child {
-  width: 50%;
-  float: left;
-  padding: 10px;
-  border: 2px solid red;
 }
 
 .fade-in-text {
