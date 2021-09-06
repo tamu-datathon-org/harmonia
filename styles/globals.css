@@ -65,19 +65,19 @@ iframe {
 .step-1 {
   display: flex;
   align-items: center;
-  padding-left: 20vw;
+  padding-left: 17vw;
 }
 
 .step-2 {
   margin-top: 30px;
   display: flex;
-  padding-left: 20vw;
+  padding-left: 17vw;
 }
 
 .step-3 {
   display: flex;
   margin-top: 30px;
-  padding-left: 20vw;
+  padding-left: 17vw;
 }
 
 .status {
@@ -168,7 +168,19 @@ iframe {
   font-family: "Space Grotesk", sans-serif, monospace !important;
 }
 
-.apply-btn {
+.float-container {
+  border: 3px solid #fff;
+  padding: 20px;
+}
+
+.float-child {
+  width: 50%;
+  float: left;
+  padding: 10px;
+  border: 2px solid red;
+}
+
+.come-in-btn {
   color: white;
   text-decoration: none;
   font-size: 1.5rem;

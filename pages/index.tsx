@@ -7,7 +7,6 @@ import { useActiveUser, UserCurrentStatus, UserProvider } from '../components/Us
 import router, { useRouter } from 'next/router';
 import { join } from 'node:path';
 import Image from 'next/image';
-//import tdlogo from '../public/main.png';
 
 
 function Home(): JSX.Element {
@@ -68,6 +67,7 @@ function Home(): JSX.Element {
       <>
         <Navbar />
         <Page className="homepage-container">
+          <img src="/main.png" />
           <Text p className="title-1">
             Join the
             <Text h4 className="title-2">
@@ -79,7 +79,7 @@ function Home(): JSX.Element {
             <>
             <div className="step-1">
             <div>
-              <div className="status">{discStatus.isInServer ? '✔️' : ''}1</div>
+              <div className="status" style={{width: '52px', height: '34px'}}>{discStatus.isInServer ? '✔️' : ''}1</div>
             </div>
             <div style={{marginLeft: '1.5vw'}}>
               <Text h4>
@@ -93,7 +93,7 @@ function Home(): JSX.Element {
 
           <div className="step-2">
             <div>
-              <div className="status">{discStatus.isInServer && discStatus.isMember ? '✔️' : ''}2</div>
+              <div className="status" style={{width: '52px', height: '34px'}}>{discStatus.isInServer && discStatus.isMember ? '✔️' : ''}2</div>
             </div>
             <div style={{marginLeft: '1.5vw'}}>
               <Text h4>
@@ -123,21 +123,19 @@ function Home(): JSX.Element {
       
           <div className="step-3" id="step-3">
             <div>
-              <div className="status">{joinServer ? '✔️' : ''}3</div>
+              <div className="status"  style={{width: '52px', height: '34px'}}>{joinServer ? '✔️' : '󠀠󠀠󠀠'}3</div>
             </div>
             <div style={{marginLeft: '1.5vw'}}>
               <Text h4>
                 Come on in!
               </Text>
               {discStatus.isInServer && discStatus.isMember && (   
-                <a href="/apply" role="button" className="btn apply-btn">Apply</a>
+                <a href="/apply" role="button" className="btn come-in-btn">Enter Server</a>
               )}
               </div>
           </div></>
           ) : (
-            //<Spinner size="large">
-              <Loading>Fetching your Discord Status</Loading>
-            //</Spinner>
+            <Loading>Fetching your Discord Status</Loading>
           )}
           </div>
         </Page>
