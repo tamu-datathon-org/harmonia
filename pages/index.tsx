@@ -74,12 +74,12 @@ function Home(): JSX.Element {
               TAMU Datathon Discord
             </Text>
           </Text>
-          <div className="container" style={{paddingLeft : '0px'}}>
+          <div className="container" style={{paddingLeft : '0px', maxWidth : '500px'}}>
           {discStatus ? (
             <>
             <div className="step-1">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status">{discStatus.isInServer && (<img src="/discord/icons/check.svg" style={{paddingRight: '10px'}} />)}1</div>
+              <div className="status">{discStatus.isInServer && (<img src="/discord/icons/check.svg" style={{paddingRight: '14px'}} />)}1</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
@@ -93,7 +93,7 @@ function Home(): JSX.Element {
 
           <div className="step-2">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status">{discStatus.isInServer && discStatus.isMember && (<img src="/discord/icons/check.svg" style={{paddingRight: '10px'}} />)}2</div>
+              <div className="status">{discStatus.isInServer && discStatus.isMember && (<img src="/discord/icons/check.svg" style={{paddingRight: '14px'}} />)}2</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
@@ -123,7 +123,7 @@ function Home(): JSX.Element {
       
           <div className="step-3" id="step-3">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status">{joinServer && (<img src="/discord/icons/check.svg" style={{paddingRight: '10px'}} />)}3</div>
+              <div className="status">{joinServer && (<img src="/discord/icons/check.svg" style={{paddingRight: '14px'}} />)}3</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
@@ -135,7 +135,7 @@ function Home(): JSX.Element {
               </div>
           </div></>
           ) : (
-            <Loading>Fetching your Discord Status</Loading>
+            <Loading>Loading (this might take some time)</Loading>
           )}
           </div>
         </Page>
