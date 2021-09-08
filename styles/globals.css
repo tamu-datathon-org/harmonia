@@ -70,13 +70,12 @@ iframe {
 
 .step-1 {
   display: flex;
-  align-items: center;
   padding-left: 14vw;
 }
 
 .step-2 {
-  margin-top: 30px;
   display: flex;
+  margin-top: 30px;
   padding-left: 14vw;
 }
 
@@ -91,9 +90,9 @@ iframe {
   line-height: 1;
   margin-top: -0.6em;
   padding-top: 50%;
-  text-align: center;
+  text-align: right;
   width: 100%;
-  font-size: 30px;
+  font-size: 35px;
   font-family: VT323;
 }
 

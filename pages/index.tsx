@@ -78,10 +78,10 @@ function Home(): JSX.Element {
           {discStatus ? (
             <>
             <div className="step-1">
-            <div>
+            <div style={{paddingRight: '1vh'}}>
               <div className="status" style={{width: '52px', height: '34px'}}>{discStatus.isInServer ? '✔️' : ''}1</div>
             </div>
-            <div style={{marginLeft: '1.5vw'}}>
+            <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
                 Connect your Discord
               </Text>
@@ -92,10 +92,10 @@ function Home(): JSX.Element {
           </div>
 
           <div className="step-2">
-            <div>
+            <div style={{paddingRight: '1vh'}}>
               <div className="status" style={{width: '52px', height: '34px'}}>{discStatus.isInServer && discStatus.isMember ? '✔️' : ''}2</div>
             </div>
-            <div style={{marginLeft: '1.5vw'}}>
+            <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
                 Agree to the Server Rules:
               </Text>
@@ -122,10 +122,10 @@ function Home(): JSX.Element {
           </div>
       
           <div className="step-3" id="step-3">
-            <div>
+            <div style={{paddingRight: '1vh'}}>
               <div className="status"  style={{width: '52px', height: '34px'}}>{joinServer ? '✔️' : '󠀠󠀠󠀠'}3</div>
             </div>
-            <div style={{marginLeft: '1.5vw'}}>
+            <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
                 Come on in!
               </Text>
