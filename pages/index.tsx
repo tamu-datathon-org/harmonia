@@ -74,7 +74,7 @@ function Home(): JSX.Element {
               TAMU Datathon Discord
             </Text>
           </Text>
-          <div className="container" style={{paddingLeft : '0px', maxWidth : '500px'}}>
+          <div className="container" style={{maxWidth : '500px'}}>
           {discStatus ? (
             <>
             <div className="step-1">
