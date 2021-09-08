@@ -79,7 +79,7 @@ function Home(): JSX.Element {
             <>
             <div className="step-1">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status" style={{width: '52px', height: '34px'}}>{discStatus.isInServer ? '✔️' : ''}1</div>
+              <div className="status">{discStatus.isInServer ? '✔️' : ''}1</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
@@ -93,7 +93,7 @@ function Home(): JSX.Element {
 
           <div className="step-2">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status" style={{width: '52px', height: '34px'}}>{discStatus.isInServer && discStatus.isMember ? '✔️' : ''}2</div>
+              <div className="status">{discStatus.isInServer && discStatus.isMember ? '✔️' : ''}2</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
@@ -123,7 +123,7 @@ function Home(): JSX.Element {
       
           <div className="step-3" id="step-3">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status"  style={{width: '52px', height: '34px'}}>{joinServer ? '✔️' : '󠀠󠀠󠀠'}3</div>
+              <div className="status">{joinServer ? '✔️' : '󠀠󠀠󠀠'}3</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
