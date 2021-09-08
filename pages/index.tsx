@@ -130,7 +130,7 @@ function Home(): JSX.Element {
                 Come on in!
               </Text>
               {discStatus.isInServer && discStatus.isMember && (   
-                <a href="/apply" role="button" className="btn come-in-btn">Enter Server</a>
+                <a href="https://discord.com/channels/755441182951211028/755442777931907082" role="button" className="btn come-in-btn">Enter Server</a>
               )}
               </div>
           </div></>
