@@ -74,7 +74,7 @@ handler.get(passport.authenticate('discord', {
     }
     await guildAddPromise;
     res.statusCode = 302;
-    res.setHeader("Location", "/discord/");
+    res.setHeader("Location", "/guild/");
     res.end();
   }
   catch(err) {

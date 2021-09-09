@@ -1,6 +1,6 @@
 const path = require('path'); // eslint-disable-line @typescript-eslint/no-var-requires
 
-const defaultBasePath = '/discord';
+const defaultBasePath = '/guild';
 const defaultFallbackUrl = 'https://tamudatathon.com/:path*';
 
 module.exports = {

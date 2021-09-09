@@ -21,7 +21,7 @@ function Home(): JSX.Element {
   const fetchStatus = async () => {
     try {
       console.log("start");
-      const data = await fetch("/discord/api/status").then((res) => res.json());
+      const data = await fetch("/guild/api/status").then((res) => res.json());
       console.log("TAKES SO LONG TO GET HERE");
       setDiscStatus(data);
     }
@@ -35,7 +35,7 @@ function Home(): JSX.Element {
     setDisableRuleButtons(true);
     try {
       setDiscStatus((oldValue) => ({...oldValue, loading : true}));
-      await fetch("/discord/api/agree");
+      await fetch("/guild/api/agree");
       setDiscStatus((oldValue) => ({...oldValue, isMember : true, loading : false}));
     }
     catch(err) {
@@ -51,7 +51,7 @@ function Home(): JSX.Element {
 
   useEffect(() => {
     if (status == UserCurrentStatus.LoggedOut) {
-      (window as any).location = "/auth/login?r=/discord";
+      (window as any).location = "/auth/login?r=/guild";
     }
   }, [status])
 
@@ -79,7 +79,7 @@ function Home(): JSX.Element {
             <>
             <div className="step-1">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status">{discStatus.isInServer && (<img src="/discord/icons/check.svg" style={{paddingRight: '14px'}} />)}1</div>
+              <div className="status">{discStatus.isInServer && (<img src="/guild/icons/check.svg" style={{paddingRight: '14px'}} />)}1</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
@@ -93,7 +93,7 @@ function Home(): JSX.Element {
 
           <div className="step-2">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status">{discStatus.isInServer && discStatus.isMember && (<img src="/discord/icons/check.svg" style={{paddingRight: '14px'}} />)}2</div>
+              <div className="status">{discStatus.isInServer && discStatus.isMember && (<img src="/guild/icons/check.svg" style={{paddingRight: '14px'}} />)}2</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
@@ -102,9 +102,9 @@ function Home(): JSX.Element {
               {discStatus.isInServer && !discStatus.isMember && (
                 <>
                 <Text p className={`fade-in-text`}>
-                  <img src="/discord/icons/Cube-Pink.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a><br></br>
-                  <img src="/discord/icons/Cube-Green.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://discord.com/guidelines" target="_blank">Discord Community Guidelines</a> and <a href="https://discord.com/terms" target="_blank">Terms of Service.</a><br></br>
-                  <img src="/discord/icons/Cube-Yellow.svg" style={{paddingRight: '1vw'}}/> No spamming, foul language, or rude behavior.
+                  <img src="/guild/icons/Cube-Pink.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a><br></br>
+                  <img src="/guild/icons/Cube-Green.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://discord.com/guidelines" target="_blank">Discord Community Guidelines</a> and <a href="https://discord.com/terms" target="_blank">Terms of Service.</a><br></br>
+                  <img src="/guild/icons/Cube-Yellow.svg" style={{paddingRight: '1vw'}}/> No spamming, foul language, or rude behavior.
                 </Text>
                 {!discStatus.loading ? (
                   <>
@@ -123,7 +123,7 @@ function Home(): JSX.Element {
       
           <div className="step-3" id="step-3">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status">{joinServer && (<img src="/discord/icons/check.svg" style={{paddingRight: '14px'}} />)}3</div>
+              <div className="status">{joinServer && (<img src="/guild/icons/check.svg" style={{paddingRight: '14px'}} />)}3</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
