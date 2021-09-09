@@ -16,6 +16,10 @@ a {
   text-decoration: none;
 }
 
+a:not([href]):not([tabindex]) {
+  color: white;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -95,6 +99,9 @@ iframe {
 }
 
 .sign-in-btn {
+  color: white;
+  display: inline-block;
+  padding: .375rem .75rem;
   text-decoration: none;
   font-size: 1.5rem;
   border-radius: 0;
@@ -106,6 +113,9 @@ iframe {
 }
 
 .agree-btn {
+  color: white;
+  display: inline-block;
+  padding: .375rem .75rem;
   text-decoration: none;
   font-size: 1.5rem;
   border-radius: 0;
@@ -114,9 +124,14 @@ iframe {
   border: 0.32rem solid #80FFD5;
   background: linear-gradient(to top left, rgba(0,195,195,0.486275) 0%, rgba(0,226,226,0.823529) 70%);
   font-family: "Space Grotesk", sans-serif, monospace !important;
+}:hover {
+  background: transparent;
 }
 
 .nope-btn {
+  color: white;
+  display: inline-block;
+  padding: .375rem .75rem;
   text-decoration: none;
   font-size: 1.5rem;
   border-radius: 0;
@@ -126,10 +141,14 @@ iframe {
   background: linear-gradient(to top left, rgba(195,92,195,1) 0%, rgb(229,107,200,1) 70%);
   font-family: "Space Grotesk", sans-serif, monospace !important;
   margin-left: 10px;
+}:hover {
+  background: transparent;
 }
 
 .come-in-btn {
   color: white;
+  display: inline-block;
+  padding: .375rem .75rem;
   text-decoration: none;
   font-size: 1.5rem;
   border-radius: 0;
@@ -138,6 +157,8 @@ iframe {
   border: 0.32rem solid #80FFD5;
   background: linear-gradient(to top left, rgba(0,195,195,0.486275) 0%, rgba(0,226,226,0.823529) 70%);
   font-family: "Space Grotesk", sans-serif, monospace !important;
+}:hover {
+  background: transparent;
 }
 
 .fade-in-text {

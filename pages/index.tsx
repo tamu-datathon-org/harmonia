@@ -86,7 +86,7 @@ function Home(): JSX.Element {
                 Connect your Discord
               </Text>
               {!discStatus.isInServer && (
-                <a role="button" className="btn sign-in-btn" style={{color: "white"}} onClick={() => {router.push('/api/auth');}}>Sign In With Discord</a>           
+                <a role="button" className="sign-in-btn" onClick={() => {router.push('/api/auth');}}>Sign In With Discord</a>           
               )}
             </div>
           </div>
@@ -102,20 +102,20 @@ function Home(): JSX.Element {
               {discStatus.isInServer && !discStatus.isMember && (
                 <>
                 <Text p className={`fade-in-text`}>
-                  <img src="/discord/icons/Cube-Pink.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a><br></br>
-                  <img src="/discord/icons/Cube-Green.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://discord.com/guidelines">Discord Community Guidelines</a> and <a href="https://discord.com/terms">Terms of Service.</a><br></br>
+                  <img src="/discord/icons/Cube-Pink.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a><br></br>
+                  <img src="/discord/icons/Cube-Green.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://discord.com/guidelines" target="_blank">Discord Community Guidelines</a> and <a href="https://discord.com/terms" target="_blank">Terms of Service.</a><br></br>
                   <img src="/discord/icons/Cube-Yellow.svg" style={{paddingRight: '1vw'}}/> No spamming, foul language, or rude behavior.
                 </Text>
                 {!discStatus.loading ? (
                   <>
-                    <a role="button" className="btn agree-btn" style={{color: "white"}} onClick={ agree }>Agree</a>
+                    <a role="button" className="btn agree-btn" onClick={ agree }>Agree</a>
                   </>
                 ) : (
                   <>
-                    <a role="button" className="btn agree-btn" style={{color: "white"}}>Agree</a>
+                    <a role="button" className="btn agree-btn">Agree</a>
                   </>
                 )}
-                <a role="button" className="btn nope-btn" style={{color: "white"}}>Nope</a>
+                <a role="button" className="btn nope-btn">Nope</a>
               </>
             )}
             </div>
