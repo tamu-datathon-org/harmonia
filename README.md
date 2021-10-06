@@ -5,4 +5,4 @@ npm install
 npm run dev
 ```
 
-Visit [http://localhost:3000/discord](http://localhost:3000/discord) on your browser.
+Visit [http://localhost:3000/guild](http://localhost:3000/guild) on your browser.
