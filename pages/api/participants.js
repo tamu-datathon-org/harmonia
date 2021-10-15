@@ -1,6 +1,6 @@
 import nextConnect from 'next-connect'
 import { authenticatedRoute } from '../../libs/middleware'
-const { eachOfLimit } = require('async');
+const { eachLimit, eachOfLimit } = require('async');
 const mongoose = require('mongoose');
 const Discord = require('discord.js');
 
@@ -30,12 +30,18 @@ handler.get(authenticatedRoute(async (req, res) => {
             const guildFetchPromise = guild.fetch();
             const users = await DiscordUser.find();
             await guildFetchPromise;
-            await eachOfLimit(users, 10, async(user) => {
+            await eachOfLimit(users, 50, async(user) => {
+              try {
                 // eslint-disable-next-line prettier/prettier
                 const member = await guild.members.fetch(user.discordId);
-                if (!(member?.roles?.every(role => role.id === process.env.ROLE_ID))) {
+                //console.log(member);
+                if (member?._roles.length === 1 && (member?._roles?.[0] === process.env.ROLE_ID)) {
+                    console.log(member?._roles + " === " + process.env.ROLE_ID);
                     allParticipants.push(user?.username + "#" + user?.discriminator);
                 }
+              } catch(err) {
+                //does nothing
+              }
             });
             res.status(200).json({ participants: allParticipants });
         }
