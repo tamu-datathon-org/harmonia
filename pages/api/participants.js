@@ -25,7 +25,6 @@ handler.get(authenticatedRoute(async (req, res) => {
         const client = new Discord.Client();
         await client.login(process.env.DISCORDBOT_TOKEN); // harmonia token
         const guild = new Discord.Guild(client, guildId);
-        const participantRole = guild.roles.cache.find(role => role.name === "member");
         const allParticipants = [];
         try {
             const guildFetchPromise = guild.fetch();
@@ -34,8 +33,9 @@ handler.get(authenticatedRoute(async (req, res) => {
             await eachOfLimit(users, 10, async(user) => {
                 // eslint-disable-next-line prettier/prettier
                 const member = await guild.members.fetch(user.discordId);
-                if (member?.role?.id === participantRole.id)
+                if (!(member?.roles?.every(role => role.id === process.env.ROLE_ID))) {
                     allParticipants.push(user?.username + "#" + user?.discriminator);
+                }
             });
             res.status(200).json({ participants: allParticipants });
         }
