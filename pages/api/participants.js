@@ -31,7 +31,7 @@ handler.get(authenticatedRoute(async (req, res) => {
             const guildFetchPromise = guild.fetch();
             const users = await DiscordUser.find();
             await guildFetchPromise;
-            await eachOfLimit(users, 10, (user) => {
+            await eachOfLimit(users, 10, async(user) => {
                 // eslint-disable-next-line prettier/prettier
                 const member = await guild.members.fetch(user.discordId);
                 if (member?.role?.id === participantRole.id)
