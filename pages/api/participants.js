@@ -31,15 +31,11 @@ handler.get(authenticatedRoute(async (req, res) => {
             const guildFetchPromise = guild.fetch();
             const users = await DiscordUser.find();
             await guildFetchPromise;
-            await eachOfLimit(users, 10, async (user) => {
-                const checkIfMember = new Promise((resolve) => {
-                    // eslint-disable-next-line prettier/prettier
-                    const member = await guild.members.fetch(user.discordId);
-                    if (member?.role?.id === participantRole.id)
-                        allParticipants.push(user?.username + "#" + user?.discriminator);
-                    resolve();
-                });
-                await checkIfMember;
+            await eachOfLimit(users, 10, (user) => {
+                // eslint-disable-next-line prettier/prettier
+                const member = await guild.members.fetch(user.discordId);
+                if (member?.role?.id === participantRole.id)
+                    allParticipants.push(user?.username + "#" + user?.discriminator);
             });
             res.status(200).json({ participants: allParticipants });
         }
