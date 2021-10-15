@@ -36,7 +36,7 @@ handler.get(authenticatedRoute(async (req, res) => {
                 const member = await guild.members.fetch(user.discordId);
                 //console.log(member);
                 if (member?._roles.length === 1 && (member?._roles?.[0] === process.env.ROLE_ID)) {
-                    console.log(member?._roles + " === " + process.env.ROLE_ID);
+                    //console.log(member?._roles + " === " + process.env.ROLE_ID);
                     allParticipants.push(user?.username + "#" + user?.discriminator);
                 }
               } catch(err) {
