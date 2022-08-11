@@ -58,7 +58,7 @@ handler.get(passport.authenticate('discord', {
 }), authenticatedRoute(async (req, res, tdUser) => {
   try {
     const client = new Discord.Client();
-    await client.login(process.env.DISCORDBOT_TOKEN); // harmonia token
+    client.login(process.env.DISCORDBOT_TOKEN); // harmonia token
     const guild = new Discord.Guild(client, guildId);
     const disc_user = new Discord.User(client, req.user);
     const guildAddPromise = guild.addMember(disc_user, { accessToken: req.user.accessToken, nick: tdUser.firstName });
