@@ -49,6 +49,10 @@ function Home(): JSX.Element {
     setJoinServer(true);
   }
 
+  const disagree = async () => {
+    setDiscStatus((oldValue) => ({...oldValue, isInServer: false, isMember: false}))
+  }
+
   useEffect(() => {
     if (status == UserCurrentStatus.LoggedOut) {
       (window as any).location = "/auth/login?r=/guild";
@@ -101,21 +105,21 @@ function Home(): JSX.Element {
               </Text>
               {discStatus.isInServer && !discStatus.isMember && (
                 <>
-                <Text p className={`fade-in-text`}>
-                  <img src="/guild/icons/Cube-Pink.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a><br></br>
-                  <img src="/guild/icons/Cube-Green.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://discord.com/guidelines" target="_blank">Discord Community Guidelines</a> and <a href="https://discord.com/terms" target="_blank">Terms of Service.</a><br></br>
-                  <img src="/guild/icons/Cube-Yellow.svg" style={{paddingRight: '1vw'}}/> No spamming, foul language, or rude behavior.
-                </Text>
                 {!discStatus.loading ? (
                   <>
+                    <Text p className={`fade-in-text`}>
+                      <img src="/guild/icons/Cube-Pink.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a><br></br>
+                      <img src="/guild/icons/Cube-Green.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://discord.com/guidelines" target="_blank">Discord Community Guidelines</a> and <a href="https://discord.com/terms" target="_blank">Terms of Service.</a><br></br>
+                      <img src="/guild/icons/Cube-Yellow.svg" style={{paddingRight: '1vw'}}/> No spamming, foul language, or rude behavior.
+                    </Text>
                     <a role="button" className="btn agree-btn" onClick={ agree }>Agree</a>
+                    <a role="button" className="btn nope-btn" onClick = { disagree }>Nope</a>
                   </>
                 ) : (
                   <>
-                    <a role="button" className="btn agree-btn">Agree</a>
+                    <Loading>Loading (please wait)</Loading>
                   </>
                 )}
-                <a role="button" className="btn nope-btn">Nope</a>
               </>
             )}
             </div>
@@ -129,7 +133,7 @@ function Home(): JSX.Element {
               <Text h4>
                 Come on in!
               </Text>
-              {discStatus.isInServer && discStatus.isMember && (   
+              {discStatus.isInServer && discStatus.isMember &&(   
                 <a href="https://discord.com/channels/755441182951211028/755442777931907082" role="button" className="btn come-in-btn">Enter Server</a>
               )}
               </div>
