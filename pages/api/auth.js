@@ -6,7 +6,7 @@ const DiscordStrategy = require('passport-discord').Strategy;
 const mongoose = require('mongoose');
 const Discord = require('discord.js');
 
-mongoose.connect(process.env.MONGODB_URI,
+const db = mongoose.connect(process.env.MONGODB_URI,
   { useNewUrlParser: true, useUnifiedTopology: true})
 
 const UserSchema = new mongoose.Schema({
