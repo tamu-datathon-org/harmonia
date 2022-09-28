@@ -6,7 +6,7 @@ import { Navbar } from '../components/Navbar';
 import { useActiveUser, UserCurrentStatus, UserProvider } from '../components/UserProvider';
 import router, { useRouter } from 'next/router';
 import { join } from 'node:path';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 
 function Home(): JSX.Element {
@@ -71,7 +71,7 @@ function Home(): JSX.Element {
       <>
         <Navbar />
         <Page className="homepage-container">
-          <img src="static/img/logos/main.svg" className="td-logo" />
+          <img src="static/img/logos/main.svg" alt = "td-logo" className="td-logo" />
           <Text p className="title-1">
             Join the
             <Text h4 className="title-2">
@@ -83,7 +83,7 @@ function Home(): JSX.Element {
             <>
             <div className="step-1">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status">{discStatus.isInServer && (<img src="/guild/icons/check.svg" style={{paddingRight: '14px'}} />)}1</div>
+              <div className="status">{discStatus.isInServer && (<img src="/guild/icons/check.svg" alt = "check.svg" style={{paddingRight: '14px'}} />)}1</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
@@ -97,7 +97,7 @@ function Home(): JSX.Element {
 
           <div className="step-2">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status">{discStatus.isInServer && discStatus.isMember && (<img src="/guild/icons/check.svg" style={{paddingRight: '14px'}} />)}2</div>
+              <div className="status">{discStatus.isInServer && discStatus.isMember && (<img src="/guild/icons/check.svg" alt = "check.svg" style={{paddingRight: '14px'}} />)}2</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
@@ -108,9 +108,9 @@ function Home(): JSX.Element {
                 {!discStatus.loading ? (
                   <>
                     <Text p className={`fade-in-text`}>
-                      <img src="/guild/icons/Cube-Pink.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a><br></br>
-                      <img src="/guild/icons/Cube-Green.svg" style={{paddingRight: '1vw'}}/> Follow the <a href="https://discord.com/guidelines" target="_blank">Discord Community Guidelines</a> and <a href="https://discord.com/terms" target="_blank">Terms of Service.</a><br></br>
-                      <img src="/guild/icons/Cube-Yellow.svg" style={{paddingRight: '1vw'}}/> No spamming, foul language, or rude behavior.
+                      <img src="/guild/icons/Cube-Pink.svg" alt = "Pink Cube" style={{paddingRight: '1vw'}}/> Follow the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a><br></br>
+                      <img src="/guild/icons/Cube-Green.svg" alt = "Green Cube" style={{paddingRight: '1vw'}}/> Follow the <a href="https://discord.com/guidelines" target="_blank">Discord Community Guidelines</a> and <a href="https://discord.com/terms" target="_blank">Terms of Service.</a><br></br>
+                      <img src="/guild/icons/Cube-Yellow.svg" alt = "Yellow Cube" style={{paddingRight: '1vw'}}/> No spamming, foul language, or rude behavior.
                     </Text>
                     <a role="button" className="btn agree-btn" onClick={ agree }>Agree</a>
                     <a role="button" className="btn nope-btn" onClick = { disagree }>Nope</a>
@@ -127,7 +127,7 @@ function Home(): JSX.Element {
       
           <div className="step-3" id="step-3">
             <div style={{paddingRight: '1vh'}}>
-              <div className="status">{joinServer && (<img src="/guild/icons/check.svg" style={{paddingRight: '14px'}} />)}3</div>
+              <div className="status">{joinServer && (<img src="/guild/icons/check.svg" alt = "check.svg" style={{paddingRight: '14px'}} />)}3</div>
             </div>
             <div style={{marginLeft: '1.5vw', marginTop: '10px'}}>
               <Text h4>
