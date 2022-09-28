@@ -20,9 +20,9 @@ function Home(): JSX.Element {
 
   const fetchStatus = async () => {
     try {
-      console.log("start");
+      // console.log("start");
       const data = await fetch("/guild/api/status").then((res) => res.json());
-      console.log("TAKES SO LONG TO GET HERE");
+      // console.log("TAKES SO LONG TO GET HERE");
       setDiscStatus(data);
     }
     catch(err) {
