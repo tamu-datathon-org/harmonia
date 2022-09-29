@@ -6,7 +6,7 @@ import { Navbar } from '../components/Navbar';
 import { useActiveUser, UserCurrentStatus, UserProvider } from '../components/UserProvider';
 import router, { useRouter } from 'next/router';
 import { join } from 'node:path';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 
 function Home(): JSX.Element {
