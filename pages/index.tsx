@@ -50,7 +50,7 @@ function Home(): JSX.Element {
   }
 
   const disagree = async () => {
-    setDiscStatus((oldValue) => ({...oldValue, isInServer: false, isMember: false}))
+    setDiscStatus((oldValue) => ({...oldValue, isInServer: false, isMember: false}));
   }
 
   useEffect(() => {
