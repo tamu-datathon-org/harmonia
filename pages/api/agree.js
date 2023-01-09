@@ -35,13 +35,20 @@ const guildId = { id: process.env.GUILD_ID }; // unique id for server in discord
 handler.get(authenticatedRoute(async (req, res, tdUser) => {
   try {
     const client = new Discord.Client();
-    let guild = null;
-    const [user, ] = await Promise.all([
-      DiscordUser.findOne({ authId: tdUser.authId }),
-      client.login(process.env.DISCORDBOT_TOKEN)
-        .then(() => guild = new Discord.Guild(client, guildId))
-        .then(() => guild.fetch()),
-    ]);
+    client.on("ready", () => {
+      console.log("The bot is ready!");
+    })
+    const user = await DiscordUser.findOne({ authId: tdUser.authId });
+    client.login(process.env.DISCORDBOT_TOKEN);
+    const guild = new Discord.Guild(client, guildId);
+    await guild.fetch();
+
+    // const [user, ] = await Promise.all([
+    //   DiscordUser.findOne({ authId: tdUser.authId }),
+    //   client.login(process.env.DISCORDBOT_TOKEN)
+    //     .then(() => guild = new Discord.Guild(client, guildId))
+    //     .then(() => guild.fetch())
+    // ]);
     
     const discUser = await guild.members.fetch(user.discordId);
     const role = new Discord.Role(client, { id: process.env.ROLE_ID }, guild);
