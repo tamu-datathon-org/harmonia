@@ -15,8 +15,10 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   return (
     <GeistProvider>
       <UserProvider>
-        <CssBaseline />
-        <Component {...pageProps} />
+        <>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </>
       </UserProvider>
     </GeistProvider>
   );
