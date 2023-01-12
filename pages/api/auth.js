@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const Discord = require('discord.js');
 
 const db = mongoose.connect(process.env.MONGODB_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true})
+  { useNewUrlParser: true, useUnifiedTopology: true});
 
 const UserSchema = new mongoose.Schema({
   discordId: { type: String, required: true },
@@ -64,22 +64,25 @@ handler.get(passport.authenticate('discord', {
     const guildAddPromise = guild.addMember(disc_user, { accessToken: req.user.accessToken, nick: tdUser.firstName });
     const profile = req.user;
     const user = await DiscordUser.findOne({ authId: tdUser.authId });
-    const userCount = await DiscordUser.countDocuments({ authId: tdUser.authId }); // changed to see if there is duplicate (which happens when people try to use multiple discord accounts)
-    if (userCount == 0) { // if user does not exist in database, create them
-      await DiscordUser.create({
+    if (!user) { // if user does not exist in database, create them
+      const newUser = await DiscordUser.create({
         discordId: profile.id,
         username: profile.username,
         discriminator: profile.discriminator,
         authId: tdUser.authId
       });
-    } else { //otherwise overwrite their information
-      await user.updateOne({
-        discordId: profile.id,
-        username: profile.username,
-        discriminator: profile.discriminator,
-        authId: tdUser.authId
+    } else {
+      await DiscordUser.updateOne({
+        authId: tdUser.authId 
+      }, {
+        $set: {
+          discordId: profile.id,
+          username: profile.username,
+          discriminator: profile.discriminator
+        }
       });
-    }
+
+    } 
     await guildAddPromise;
     res.statusCode = 302;
     res.setHeader("Location", "/guild/");
