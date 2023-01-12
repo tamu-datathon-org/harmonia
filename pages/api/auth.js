@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const Discord = require('discord.js');
 
 const db = mongoose.connect(process.env.MONGODB_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true})
+  { useNewUrlParser: true, useUnifiedTopology: true});
 
 const UserSchema = new mongoose.Schema({
   discordId: { type: String, required: true },
@@ -63,7 +63,7 @@ handler.get(passport.authenticate('discord', {
     const disc_user = new Discord.User(client, req.user);
     const guildAddPromise = guild.addMember(disc_user, { accessToken: req.user.accessToken, nick: tdUser.firstName });
     const profile = req.user;
-    const user = await DiscordUser.findOne({ discordId: profile.id });
+    const user = await DiscordUser.findOne({ authId: tdUser.authId });
     if (!user) { // if user does not exist in database, create them
       const newUser = await DiscordUser.create({
         discordId: profile.id,
@@ -71,7 +71,18 @@ handler.get(passport.authenticate('discord', {
         discriminator: profile.discriminator,
         authId: tdUser.authId
       });
-    }
+    } else {
+      await DiscordUser.updateOne({
+        authId: tdUser.authId 
+      }, {
+        $set: {
+          discordId: profile.id,
+          username: profile.username,
+          discriminator: profile.discriminator
+        }
+      });
+
+    } 
     await guildAddPromise;
     res.statusCode = 302;
     res.setHeader("Location", "/guild/");

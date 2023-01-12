@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Discord = require('discord.js');
 
 const db = mongoose.connect(process.env.MONGODB_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true})
+  { useNewUrlParser: true, useUnifiedTopology: true});
 
 const UserSchema = new mongoose.Schema({
   discordId: { type: String, required: true },
