@@ -69,7 +69,7 @@ function Home(): JSX.Element {
       <>
         <Navbar />
         <Page className="homepage-container">
-          <img src="static/img/logos/main.svg" className="td-logo" />
+          <img src="static/img/logos/main-23.svg" className="td-logo" />
           <Text p className="title-1">
             Join the
             <Text h4 className="title-2">
